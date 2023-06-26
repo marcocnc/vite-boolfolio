@@ -18,9 +18,15 @@ export default {
         getApi(){
           axios.get(store.apiUrl + 'posts')
           .then(results => {
-            this.posts = results.data;
-            console.log(this.posts);
+            this.posts = results.data.data;
+            // console.log(results.data);
+            console.log(results.data);
           })
+        },
+
+        formatData(dateString){
+          const d = new Date(dateString);
+          return d.toLocaleDateString();
         }
       },
 
@@ -45,7 +51,8 @@ export default {
         v-for="post in posts" 
         :key="post.id">
           <td>
-            {{ post.name }}
+            {{ post.name }} - 
+            <span> {{ formatData(post.start) }} </span>
           </td>
         </tr>
         
