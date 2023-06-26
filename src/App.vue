@@ -3,6 +3,13 @@ import {store} from './data/store';
 import axios from 'axios';
 export default {
   name: 'Home',
+
+  data(){
+    return{
+      posts: [] 
+    }
+  },
+
   components:{
         store
       },
@@ -11,7 +18,8 @@ export default {
         getApi(){
           axios.get(store.apiUrl + 'posts')
           .then(results => {
-            console.log(results);
+            this.posts = results.data;
+            console.log(this.posts);
           })
         }
       },
@@ -25,7 +33,24 @@ export default {
 
 <template>
   <div class="container bg-dark">
-    <h1 class="text-white">test</h1>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Name</th>
+        </tr>
+      </thead>
+      <tbody>
+        
+        <tr
+        v-for="post in posts" 
+        :key="post.id">
+          <td>
+            {{ post.name }}
+          </td>
+        </tr>
+        
+      </tbody>
+</table>
   </div>
 </template>
 
