@@ -2,6 +2,7 @@
 import {store} from './data/store';
 import axios from 'axios';
 import Card from './components/Card.vue';
+import Home from './pages/Home.vue';
 export default {
   name: 'Home',
 
@@ -55,12 +56,13 @@ export default {
 <template>
 
   <div class="container d-flex flex-wrap">
-    <Card v-for="post in posts" :key="post.id" 
+    <router-view></router-view>
+    <!-- <Card v-for="post in posts" :key="post.id" 
       :name="post.name"
       :date="post.start"
       :type="post.type.name"
       :technologies="technologies"
-    />
+    /> -->
   </div>
 
 </template>
