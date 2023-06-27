@@ -1,6 +1,7 @@
 <script>
 import {store} from './data/store';
 import axios from 'axios';
+import Card from './components/Card.vue';
 export default {
   name: 'Home',
 
@@ -11,54 +12,57 @@ export default {
   },
 
   components:{
-        store
+        store,
+        Card
       },
 
       methods:{
         getApi(){
           axios.get(store.apiUrl + 'posts')
           .then(results => {
-            this.posts = results.data.data;
-            // console.log(results.data);
-            console.log(results.data);
+            this.posts = results.data;
+            // console.log(this.posts, 'this.posts');
           })
         },
 
         formatData(dateString){
           const d = new Date(dateString);
           return d.toLocaleDateString();
-        }
+        },
+
+        consoleLog(){
+          console.log(this.technologies);
+        },
+
+      },
+      
+      computed:{
+        technologies(){
+            if(!this.posts.technologies) return '- no technology -';
+            
+            return this.post.technologies.name;
+          },
       },
 
       mounted(){
-        this.getApi()
+        this.getApi(),
+        this.consoleLog();
       }
 }
 </script>
 
 
 <template>
-  <div class="container bg-dark">
-    <table class="table">
-      <thead>
-        <tr>
-          <th scope="col">Name</th>
-        </tr>
-      </thead>
-      <tbody>
-        
-        <tr
-        v-for="post in posts" 
-        :key="post.id">
-          <td>
-            {{ post.name }} - 
-            <span> {{ formatData(post.start) }} </span>
-          </td>
-        </tr>
-        
-      </tbody>
-</table>
+
+  <div class="container d-flex flex-wrap">
+    <Card v-for="post in posts" :key="post.id" 
+      :name="post.name"
+      :date="post.start"
+      :type="post.type.name"
+      :technologies="technologies"
+    />
   </div>
+
 </template>
 
 
