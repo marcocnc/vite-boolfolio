@@ -4,6 +4,7 @@ export default {
 
     props:{
         name: String,
+        slug: String,
         date: String,
         type: String,
         technologies: Array
@@ -17,7 +18,7 @@ export default {
     }
 }
 </script>
-
+ 
 
 <template>
     <div class="card p-3">
@@ -31,6 +32,12 @@ export default {
             </p>
             <p>{{ type }}</p>
         </div>
+        <button class="btn btn-primary">
+            
+            <router-link :to="{ name:'details-page', params:{ slug: slug } }">
+                Dettagli
+            </router-link>
+        </button>
     </div>
 </template>
 

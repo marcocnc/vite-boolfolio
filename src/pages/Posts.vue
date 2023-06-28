@@ -24,7 +24,7 @@ export default {
           axios.get(store.apiUrl + 'posts')
           .then(results => {
             this.posts = results.data;
-            // console.log(this.posts, 'this.posts');
+            // console.log(this.posts[0].slug, 'this.posts');
           })
         },
 
@@ -62,6 +62,7 @@ export default {
   <div class="container d-flex flex-wrap">
     <Card v-for="post in posts" :key="post.id" 
       :name="post.name"
+      :slug="post.slug"
       :date="post.start"
       :type="post.type.name"
       :technologies="post.technologies"
