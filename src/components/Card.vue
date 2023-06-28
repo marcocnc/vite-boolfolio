@@ -6,7 +6,7 @@ export default {
         name: String,
         date: String,
         type: String,
-        technologies: String
+        technologies: Array
     },
 
     methods:{
@@ -26,7 +26,9 @@ export default {
             <span>{{ formatData(date) }}</span>
         </div>
         <div class="categories-types">
-            <p>{{ technologies }}</p>
+            <p>
+                <span class="badge bg-warning" v-for="technology in technologies" :key="technology.id">{{ technology.name }}</span>
+            </p>
             <p>{{ type }}</p>
         </div>
     </div>

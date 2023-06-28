@@ -1,69 +1,60 @@
 <script>
-import {store} from './data/store';
-import axios from 'axios';
-import Card from './components/Card.vue';
 import Home from './pages/Home.vue';
+
+// import Home from './pages/Home.vue';
 export default {
-  name: 'Home',
+  name: 'App',
 
-  data(){
-    return{
-      posts: [] 
-    }
-  },
+  // data(){
+  //   return{
+  //     posts: [] 
+  //   }
+  // },
 
-  components:{
-        store,
-        Card
-      },
+  // components:{
+  //       Home
+  //     },
 
-      methods:{
-        getApi(){
-          axios.get(store.apiUrl + 'posts')
-          .then(results => {
-            this.posts = results.data;
-            // console.log(this.posts, 'this.posts');
-          })
-        },
+  //     methods:{
+  //       getApi(){
+  //         axios.get(store.apiUrl + 'posts')
+  //         .then(results => {
+  //           this.posts = results.data;
+  //           // console.log(this.posts, 'this.posts');
+  //         })
+  //       },
 
-        formatData(dateString){
-          const d = new Date(dateString);
-          return d.toLocaleDateString();
-        },
+  //       formatData(dateString){
+  //         const d = new Date(dateString);
+  //         return d.toLocaleDateString();
+  //       },
 
-        consoleLog(){
-          console.log(this.technologies);
-        },
+  //       consoleLog(){
+  //         console.log(this.technologies);
+  //       },
 
-      },
+  //     },
       
-      computed:{
-        technologies(){
-            if(!this.posts.technologies) return '- no technology -';
+  //     // computed:{
+  //     //   technologies(){
+  //     //     console.log(this.posts);
+  //     //       if(!this.posts.technologies.length) return '- no technology -';
             
-            return this.post.technologies.name;
-          },
-      },
+  //     //       return this.post.technologies.name;
+  //     //     },
+  //     // },
 
-      mounted(){
-        this.getApi(),
-        this.consoleLog();
-      }
+  //     mounted(){
+  //       this.getApi(),
+  //       this.consoleLog();
+  //     }
 }
 </script>
 
 
 <template>
-
-  <div class="container d-flex flex-wrap">
-    <router-view></router-view>
-    <!-- <Card v-for="post in posts" :key="post.id" 
-      :name="post.name"
-      :date="post.start"
-      :type="post.type.name"
-      :technologies="technologies"
-    /> -->
-  </div>
+  <router-view></router-view>
+  
 
 </template>
 
