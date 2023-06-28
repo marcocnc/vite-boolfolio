@@ -42,7 +42,7 @@ export default {
       // computed:{
       //   technologies(){
       //     console.log(this.posts);
-      //       if(!this.posts.technologies.length) return '- no technology -';
+      //       if(!this.post.technologies.length) return '- no technology -';
             
       //       return this.post.technologies.name;
       //     },
