@@ -22,12 +22,12 @@ export default {
 <template>
     <div class="card p-3">
         <div class="card-title d-flex justify-content-between">
-            <h3>{{ name }}</h3>
-            <span>{{ formatData(date) }}</span>
+            <h4>{{ name }}</h4>
+            <span class="ps-2">{{ formatData(date) }}</span>
         </div>
         <div class="categories-types">
             <p>
-                <span class="badge bg-warning" v-for="technology in technologies" :key="technology.id">{{ technology.name }}</span>
+                <span class="badge bg-warning me-2" v-for="technology in technologies" :key="technology.id">{{ technology.name }}</span>
             </p>
             <p>{{ type }}</p>
         </div>
